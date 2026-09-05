@@ -78,7 +78,7 @@ Validating Access Token and permissions
 >>> token_verifier.verify("some-access-token", required_permissions=["read:user", "delete:user"])
 """
 
-__version__ = "1.2.0"
+__version__ = "1.2.1"
 
 from .http_bearer import get_token  # noqa
 from .jwt_verifier import (  # noqa
