@@ -1,0 +1,120 @@
+[project]
+name = "auth0-jwt-validator"
+version = "0.1.0"
+description = "A JWT python package to validate tokens, scopes and permissions for Auth0 tokens."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "dbritto-dev", email = "dbritto.dev@gmail.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "authlib>=1.8.0",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Security",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+keywords = ["auth0", "jwt", "jwks", "oauth2", "openid-connect", "token-validation"]
+
+[project.urls]
+Homepage = "https://github.com/dbritto-dev/auth0-jwt-validator-python"
+Repository = "https://github.com/dbritto-dev/auth0-jwt-validator-python"
+Issues = "https://github.com/dbritto-dev/auth0-jwt-validator-python/issues"
+
+[project.optional-dependencies]
+dev = [
+    "bandit>=1.9.4",
+    "coverage>=7.16.0",
+    "nox>=2026.8.17",
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.16.6",
+    "safety>=3.8.1",
+    "ty>=0.0.78",
+]
+lint = [
+    "ruff>=0.16.6",
+]
+test = [
+    "coverage>=7.16.0",
+    "nox>=2026.8.17",
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+]
+security-test = [
+    "bandit>=1.9.4",
+    "safety>=3.8.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.10,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 99
+target-version = "py310"
+exclude = ["build", "*.egg-info", ".github", ".githooks", ".vscode", ".nox"]
+
+[tool.ruff.lint]
+select = [
+  # flake8-bugbear
+  "B",
+  # flake8-comprehensions and mccabe
+  "C",
+  # pycodestyle
+  "E", "W",
+  # pyflakes
+  "F",
+  # isort
+  "I",
+  # bandit
+  "S",
+  # flake8-quotes
+  "Q",
+  # pylint
+  "PLE", "PLR", "PLW"
+]
+ignore = ["E501", "B904", "B008"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*.py" = ["S101", "S106"]
+
+[tool.ruff.lint.pylint]
+max-args = 10
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.ty.rules]
+deprecated = "ignore"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["auth0_jwt_validator"]
+
+[tool.coverage.report]
+fail_under = 90
