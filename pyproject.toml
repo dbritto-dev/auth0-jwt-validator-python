@@ -1,6 +1,6 @@
 [project]
 name = "auth0-jwt-validator"
-version = "0.1.1"
+version = "1.2.0"
 description = "A JWT python package to validate tokens, scopes and permissions for Auth0 tokens."
 readme = "README.md"
 license = "MIT"
